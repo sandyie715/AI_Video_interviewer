@@ -1,0 +1,417 @@
+[
+    {
+        "timestamp": "2026-01-08T16:47:09.646166",
+        "qna": [
+            {
+                "question": "Can you describe a project where you applied pattern recognition techniques and the outcomes you achieved?",
+                "answer": "I used to achieve the open c project in that I used pattern recognition"
+            },
+            {
+                "question": "What are some common challenges you\u2019ve faced when implementing Natural Language Processing solutions, and how did you overcome them?",
+                "answer": "used in natural language processing for a text classification where the PDF consists of lot of text I used NLP to recognise and forced to implement the project using machine learning algorithm like TFT and another but and but"
+            },
+            {
+                "question": "How do you ensure the efficiency of algorithms and data structures in your software development projects?",
+                "answer": "used time complexity and space complexity for the algorithm implementation I checked with the every algorithm with time complexity"
+            },
+            {
+                "question": "Can you give an example of a complex problem you solved using machine learning frameworks like TensorFlow or PyTorch?",
+                "answer": "why you should not in pie chart for building your own model like scalar I built from the scratch and implemented for classification of the project like it will useful for 80% of the project"
+            },
+            {
+                "question": "Which programming language do you prefer for developing machine learning applications, and why?",
+                "answer": "Python for machine learning project because of it will not library including cleaning the data numpy processing the data for Pandas and visualisation using a plot live and SQL for model development and psychic lamp for my front end development and it include everything that's why I preferred that one"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 4,
+            "communication_score": 3,
+            "overall_score": 3,
+            "recommendation": "Maybe",
+            "feedback": "The candidate demonstrates some understanding of machine learning and NLP, but their explanations lack clarity and coherence."
+        }
+    },
+    {
+        "interview_id": "20260108_165957",
+        "timestamp": "2026-01-08T17:01:21.936398",
+        "qna": [
+            {
+                "question": "Can you explain how you have applied pattern recognition techniques in a previous project?",
+                "answer": "attended for"
+            },
+            {
+                "question": "What are some common challenges you've faced when working with Natural Language Processing, and how did you overcome them?",
+                "answer": "find embedding"
+            },
+            {
+                "question": "How do you ensure the efficiency of algorithms and data structures in your software development projects?",
+                "answer": "should I like time complexity and space complexity it will"
+            },
+            {
+                "question": "Can you describe a complex problem you solved using machine learning, and which framework you utilized for that solution?",
+                "answer": "machine learning like using the"
+            },
+            {
+                "question": "How do you approach debugging and optimizing code in Python or Java, particularly in the context of machine learning applications?",
+                "answer": "Python used using"
+            },
+            {
+                "question": "How do you approach debugging and optimizing code in Python or Java, particularly in the context of machine learning applications?",
+                "answer": "gallery for detecting everything"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 3,
+            "overall_score": 2,
+            "recommendation": "No",
+            "feedback": "Candidate provided vague and incomplete answers, lacking depth in technical knowledge and communication."
+        },
+        "video_folder": "interview_videos\\20260108_165957"
+    },
+    {
+        "interview_id": "20260108_165957",
+        "timestamp": "2026-01-08T17:01:25.162877",
+        "qna": [
+            {
+                "question": "Can you explain how you have applied pattern recognition techniques in a previous project?",
+                "answer": "attended for"
+            },
+            {
+                "question": "What are some common challenges you've faced when working with Natural Language Processing, and how did you overcome them?",
+                "answer": "find embedding"
+            },
+            {
+                "question": "How do you ensure the efficiency of algorithms and data structures in your software development projects?",
+                "answer": "should I like time complexity and space complexity it will"
+            },
+            {
+                "question": "Can you describe a complex problem you solved using machine learning, and which framework you utilized for that solution?",
+                "answer": "machine learning like using the"
+            },
+            {
+                "question": "How do you approach debugging and optimizing code in Python or Java, particularly in the context of machine learning applications?",
+                "answer": "Python used using"
+            },
+            {
+                "question": "How do you approach debugging and optimizing code in Python or Java, particularly in the context of machine learning applications?",
+                "answer": "gallery for detecting everything"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 3,
+            "overall_score": 2,
+            "recommendation": "No",
+            "feedback": "Candidate provided vague and incomplete answers, lacking depth in technical knowledge and clarity in communication."
+        },
+        "video_folder": "interview_videos\\20260108_165957"
+    },
+    {
+        "interview_id": "20260108_170349",
+        "timestamp": "2026-01-08T17:04:35.186982",
+        "qna": [
+            {
+                "question": "Can you describe a project where you implemented a neural network for a pattern recognition task, and what challenges you faced during the process?",
+                "answer": "it's asking"
+            },
+            {
+                "question": "How have you utilized Natural Language Processing techniques in your previous work, and what specific applications did you focus on?",
+                "answer": "can you repeat the question"
+            },
+            {
+                "question": "How have you utilized Natural Language Processing techniques in your previous work, and what specific applications did you focus on?",
+                "answer": "to take it on"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 0,
+            "communication_score": 0,
+            "overall_score": 0,
+            "recommendation": "No",
+            "feedback": "The candidate was unable to answer the questions, indicating a lack of understanding and communication skills."
+        },
+        "video_folder": "interview_videos\\20260108_170349"
+    },
+    {
+        "interview_id": "20260108_170349",
+        "timestamp": "2026-01-08T17:04:39.687608",
+        "qna": [
+            {
+                "question": "Can you describe a project where you implemented a neural network for a pattern recognition task, and what challenges you faced during the process?",
+                "answer": "it's asking"
+            },
+            {
+                "question": "How have you utilized Natural Language Processing techniques in your previous work, and what specific applications did you focus on?",
+                "answer": "can you repeat the question"
+            },
+            {
+                "question": "How have you utilized Natural Language Processing techniques in your previous work, and what specific applications did you focus on?",
+                "answer": "to take it on"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 0,
+            "communication_score": 0,
+            "overall_score": 0,
+            "recommendation": "No",
+            "feedback": "Candidate did not provide relevant answers or demonstrate understanding of the topics."
+        },
+        "video_folder": "interview_videos\\20260108_170349"
+    },
+    {
+        "interview_id": "20260108_184705",
+        "timestamp": "2026-01-08T18:48:48.059427",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a function and a method in Python, and provide an example of each?",
+                "answer": "function is function and method is method I don't"
+            },
+            {
+                "question": "How would you use Flask or Django to create a simple REST API endpoint, and what are the key components you would include?",
+                "answer": "go with next question"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 1,
+            "communication_score": 2,
+            "overall_score": 1,
+            "recommendation": "No",
+            "feedback": "Candidate demonstrated a lack of understanding of basic concepts and did not engage with the questions."
+        },
+        "video_folder": "interview_videos\\20260108_184705"
+    },
+    {
+        "interview_id": "20260108_184902",
+        "timestamp": "2026-01-08T18:49:49.525293",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a list and a tuple in Python, and provide an example of when you might use each?",
+                "answer": "what is the thing that we can change after the program but tuple is the static thing because"
+            },
+            {
+                "question": "Describe how you would set up a simple REST API using Flask. What are the key components you would include?",
+                "answer": "nothing that we can do this and that is the thing that I can speak with and such a thing I can know I but I can't do that but that is a thing I can do"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 1,
+            "overall_score": 1,
+            "recommendation": "No",
+            "feedback": "Candidate struggled to provide clear and accurate answers."
+        },
+        "video_folder": "interview_videos\\20260108_184902"
+    },
+    {
+        "interview_id": "20260108_185928",
+        "timestamp": "2026-01-08T19:00:25.778457",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a function and a method in Python, and provide an example of each?",
+                "answer": "the question"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 3,
+            "overall_score": 2,
+            "recommendation": "No",
+            "feedback": "The candidate did not provide a clear explanation or examples."
+        },
+        "video_folder": "interview_videos\\20260108_185928"
+    },
+    {
+        "interview_id": "20260108_185928",
+        "timestamp": "2026-01-08T19:00:28.669031",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a function and a method in Python, and provide an example of each?",
+                "answer": "the question"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 3,
+            "overall_score": 2,
+            "recommendation": "No",
+            "feedback": "The candidate did not provide a clear explanation or examples."
+        },
+        "video_folder": "interview_videos\\20260108_185928"
+    },
+    {
+        "interview_id": "20260108_185928",
+        "timestamp": "2026-01-08T19:00:30.831492",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a function and a method in Python, and provide an example of each?",
+                "answer": "the question"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 2,
+            "communication_score": 3,
+            "overall_score": 2,
+            "recommendation": "No",
+            "feedback": "The candidate did not provide a clear explanation or examples."
+        },
+        "video_folder": "interview_videos\\20260108_185928"
+    },
+    {
+        "interview_id": "20260109_183116",
+        "timestamp": "2026-01-09T18:32:38.012430",
+        "qna": [
+            {
+                "question": "Can you explain how you would use Flask or Django to develop a simple backend application, and what key features you would implement?",
+                "answer": "next question"
+            },
+            {
+                "question": "Describe a personal or academic project where you utilized Python. What challenges did you face, and how did you overcome them?",
+                "answer": "hello hi are you listen"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 0,
+            "communication_score": 0,
+            "overall_score": 0,
+            "recommendation": "No",
+            "feedback": "Candidate did not provide relevant answers to the questions."
+        },
+        "video_folder": "interview_videos\\20260109_183116"
+    },
+    {
+        "interview_id": "20260109_184824",
+        "timestamp": "2026-01-09T18:49:12.640375",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a Flask and Django framework, and when you might choose one over the other for a project?",
+                "answer": "sorry I don't know"
+            },
+            {
+                "question": "How do you approach debugging a piece of Python code that is not functioning as expected?",
+                "answer": "should I answer you why should I answer you"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 0,
+            "communication_score": 0,
+            "overall_score": 0,
+            "recommendation": "No",
+            "feedback": "The candidate demonstrated a lack of knowledge in key technical areas and did not communicate effectively."
+        },
+        "video_folder": "interview_videos\\20260109_184824"
+    },
+    {
+        "interview_id": "20260109_184824",
+        "timestamp": "2026-01-09T18:49:26.667849",
+        "qna": [
+            {
+                "question": "Can you explain the difference between a Flask and Django framework, and when you might choose one over the other for a project?",
+                "answer": "sorry I don't know"
+            },
+            {
+                "question": "How do you approach debugging a piece of Python code that is not functioning as expected?",
+                "answer": "should I answer you why should I answer you"
+            }
+        ],
+        "camera_metrics": {
+            "totalFrames": 0,
+            "noFaceFrames": 0,
+            "lookAwayFrames": 0,
+            "face_presence": "NaN",
+            "focus_quality": "NaN"
+        },
+        "evaluation": {
+            "technical_score": 0,
+            "communication_score": 0,
+            "overall_score": 0,
+            "recommendation": "No",
+            "feedback": "The candidate demonstrated a lack of knowledge in key technical areas and did not communicate effectively."
+        },
+        "video_folder": "interview_videos\\20260109_184824"
+    }
+]

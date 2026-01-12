@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Interviewer</title>
+    <script defer src="https://unpkg.com/face-api.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+
+<!-- ================= STAGE 1 ================= -->
+<div id="jdPage">
+    <h1>🎙️ AI Video Interviewer</h1>
+    <p>Paste Job Description Below</p>
+    <textarea id="jdInput" placeholder="Paste the full job description here..."></textarea>
+    <button id="startBtn" onclick="submitJD()">Start Interview</button>
+</div>
+
+<!-- ================= STAGE 2 ================= -->
+<div id="interviewPage">
+    <video id="video" autoplay muted playsinline></video>
+    <div id="overlay"></div>
+    
+    <!-- Recording Indicator -->
+    <div id="recordingIndicator">
+        <div class="record-dot"></div>
+        <span>Recording...</span>
+    </div>
+    
+    <!-- End Call Button -->
+    <button id="endCallBtn" class="show" onclick="endCall()">🔴 End Call</button>
+    
+    <div id="caption">
+        <div id="captionText">Initializing...</div>
+        <div id="statusText"></div>
+    </div>
+</div>
+
+    <script src="https://unpkg.com/face-api.js"></script>
+
+<script src="/static/js/state.js"></script>
+<script src="/static/js/utils.js"></script>
+<script src="/static/js/camera.js"></script>
+<script src="/static/js/speech.js"></script>
+<script src="/static/js/interview.js"></script>
+
+</body>
+</html>
