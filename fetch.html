@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive AV Recorder & Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .video-container {
+            aspect-ratio: 16 / 9;
+            background: #1a1a1a;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .recording-pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .audio-bar {
+            transition: height 0.1s ease-out;
+        }
+        /* Custom scrollbar for the library list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col items-center p-4 md:p-8">
+
+    <div class="max-w-4xl w-full space-y-6">
+        <!-- Navigation Tabs -->
+        <div class="flex justify-center mb-4">
+            <div class="bg-gray-800 p-1 rounded-xl flex gap-1 border border-gray-700">
+                <button id="nav-recorder" class="px-6 py-2 rounded-lg font-bold transition-all bg-blue-600 text-white shadow-lg">
+                    Recorder
+                </button>
+                <button id="nav-library" class="px-6 py-2 rounded-lg font-bold transition-all text-gray-400 hover:bg-gray-700">
+                    My Library
+                </button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="text-center space-y-2">
+            <h1 id="page-title" class="text-3xl font-bold tracking-tight text-white">Drive AV Recorder</h1>
+            <p id="page-desc" class="text-gray-400">Capture high-quality video and audio directly to your Google Drive</p>
+        </div>
+
+        <!-- Recorder View -->
+        <div id="view-recorder" class="block space-y-6">
+            <div class="bg-gray-800 p-6 rounded-2xl shadow-xl border border-gray-700">
+                <div class="video-container shadow-2xl mb-6">
+                    <video id="preview" autoplay muted playsinline class="w-full h-full object-cover"></video>
+                    
+                    <div id="recording-indicator" class="hidden absolute top-4 right-4 flex items-center gap-2 bg-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider z-10">
+                        <div class="w-2 h-2 bg-white rounded-full recording-pulse"></div>
+                        Recording: <span id="timer">00:00</span> / 05:00
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 flex items-end gap-1 h-8 px-2 py-1 bg-black/40 rounded-lg backdrop-blur-sm">
+                        <div id="bar1" class="audio-bar w-1 bg-blue-400 rounded-full h-1"></div>
+                        <div id="bar2" class="audio-bar w-1 bg-blue-400 rounded-full h-1"></div>
+                        <div id="bar3" class="audio-bar w-1 bg-blue-400 rounded-full h-1"></div>
+                        <div id="bar4" class="audio-bar w-1 bg-blue-400 rounded-full h-1"></div>
+                        <span class="text-[10px] text-blue-200 ml-1 font-bold uppercase">Audio</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button id="start-btn" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-full font-semibold transition-all active:scale-95 disabled:opacity-50">
+                        Record
+                    </button>
+                    <button id="stop-btn" disabled class="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-full font-semibold transition-all active:scale-95 disabled:opacity-50">
+                        Stop
+                    </button>
+                    <button id="save-btn" disabled class="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-full font-semibold transition-all active:scale-95 disabled:opacity-50">
+                        Save to Drive
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Library View -->
+        <div id="view-library" class="hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- List Section -->
+                <div class="md:col-span-1 bg-gray-800 rounded-2xl border border-gray-700 flex flex-col h-[500px]">
+                    <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                        <h3 class="font-bold text-sm uppercase text-gray-400">Recordings</h3>
+                        <button id="refresh-library" class="text-blue-400 hover:text-blue-300 text-xs font-bold">Refresh</button>
+                    </div>
+                    <div id="library-list" class="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2">
+                        <p class="text-center text-gray-500 text-sm py-10">Sign in to view your library.</p>
+                    </div>
+                </div>
+
+                <!-- Player Section -->
+                <div class="md:col-span-2 bg-gray-800 rounded-2xl border border-gray-700 p-4 flex flex-col h-[500px]">
+                    <div class="video-container flex-1 mb-4 bg-black">
+                        <video id="library-player" controls class="w-full h-full"></video>
+                        <div id="player-placeholder" class="absolute inset-0 flex items-center justify-center text-gray-600 text-sm italic">
+                            Select a video from the list to play
+                        </div>
+                    </div>
+                    <div id="video-info" class="space-y-1">
+                        <h4 id="playing-title" class="font-bold text-white truncate">No video selected</h4>
+                        <p id="playing-date" class="text-xs text-gray-500">---</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status & Logs -->
+        <div id="status-container" class="hidden bg-gray-800 border border-gray-700 p-4 rounded-xl">
+            <h3 class="text-xs font-bold text-gray-500 uppercase mb-2">System Status</h3>
+            <div id="status-message" class="text-sm text-gray-300">Initializing...</div>
+            <div id="progress-bar-container" class="hidden mt-3 w-full bg-gray-700 rounded-full h-2">
+                <div id="progress-bar" class="bg-blue-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
+        <div class="bg-gray-800 p-6 rounded-xl max-w-sm w-full border border-gray-700">
+            <h2 id="modal-title" class="text-xl font-bold mb-2 text-white"></h2>
+            <p id="modal-body" class="text-gray-400 mb-6"></p>
+            <button onclick="closeModal()" class="w-full bg-blue-600 py-2 rounded-lg font-bold hover:bg-blue-500 transition-colors">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const CLIENT_ID = '1066311652026-vndvdrqgvf18epoe2rlodhkesubn0u4p.apps.googleusercontent.com'; 
+        const API_KEY = 'AIzaSyAAwh9oVNej8flePAOZTkzO3_BqKuuuock';
+        const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+        // ---------------------
+
+        let mediaRecorder;
+        let recordedChunks = [];
+        let startTime, timerInterval, stream, audioContext, analyser, dataArray;
+        let tokenClient, accessToken = null;
+        let blob;
+
+        const preview = document.getElementById('preview');
+        const libraryPlayer = document.getElementById('library-player');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const saveBtn = document.getElementById('save-btn');
+        const statusMsg = document.getElementById('status-message');
+        const libraryList = document.getElementById('library-list');
+
+        // --- AUTH & INIT ---
+        window.onload = () => {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: (response) => {
+                    if (response.error !== undefined) return;
+                    accessToken = response.access_token;
+                    // Trigger pending action
+                    if (window.pendingAction === 'upload') performUpload();
+                    if (window.pendingAction === 'list') fetchLibrary();
+                },
+            });
+            setupMedia();
+            setupNavigation();
+        };
+
+        function setupNavigation() {
+            const btnRec = document.getElementById('nav-recorder');
+            const btnLib = document.getElementById('nav-library');
+            const viewRec = document.getElementById('view-recorder');
+            const viewLib = document.getElementById('view-library');
+
+            btnRec.onclick = () => {
+                viewRec.classList.remove('hidden');
+                viewLib.classList.add('hidden');
+                btnRec.className = "px-6 py-2 rounded-lg font-bold transition-all bg-blue-600 text-white shadow-lg";
+                btnLib.className = "px-6 py-2 rounded-lg font-bold transition-all text-gray-400 hover:bg-gray-700";
+                document.getElementById('page-title').innerText = "Drive AV Recorder";
+            };
+
+            btnLib.onclick = () => {
+                viewRec.classList.add('hidden');
+                viewLib.classList.remove('hidden');
+                btnLib.className = "px-6 py-2 rounded-lg font-bold transition-all bg-blue-600 text-white shadow-lg";
+                btnRec.className = "px-6 py-2 rounded-lg font-bold transition-all text-gray-400 hover:bg-gray-700";
+                document.getElementById('page-title').innerText = "Video Library";
+                
+                if (!accessToken) {
+                    window.pendingAction = 'list';
+                    tokenClient.requestAccessToken({ prompt: '' });
+                } else {
+                    fetchLibrary();
+                }
+            };
+
+            document.getElementById('refresh-library').onclick = fetchLibrary;
+        }
+
+        // --- RECORDER LOGIC ---
+        async function setupMedia() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { width: 1280, height: 720 }, 
+                    audio: true 
+                });
+                preview.srcObject = stream;
+                setupVisualizer(stream);
+                updateStatus("System ready.");
+            } catch (err) {
+                updateStatus("Media Error: " + err.message);
+            }
+        }
+
+        function setupVisualizer(stream) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const source = audioContext.createMediaStreamSource(stream);
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 32;
+            source.connect(analyser);
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+            const bars = [1,2,3,4].map(i => document.getElementById('bar'+i));
+            
+            function draw() {
+                requestAnimationFrame(draw);
+                analyser.getByteFrequencyData(dataArray);
+                bars.forEach((bar, i) => {
+                    const val = dataArray[i] / 255;
+                    bar.style.height = `${Math.max(4, val * 32)}px`;
+                });
+            }
+            draw();
+        }
+
+        startBtn.onclick = () => {
+            recordedChunks = [];
+            mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp9,opus' });
+            mediaRecorder.ondataavailable = e => e.data.size > 0 && recordedChunks.push(e.data);
+            mediaRecorder.onstop = () => {
+                blob = new Blob(recordedChunks, { type: 'video/webm' });
+                saveBtn.disabled = false;
+                updateStatus("Recording complete. Ready to save.");
+            };
+            mediaRecorder.start();
+            startTime = Date.now();
+            startTimer();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            document.getElementById('recording-indicator').classList.remove('hidden');
+        };
+
+        stopBtn.onclick = () => {
+            mediaRecorder.stop();
+            clearInterval(timerInterval);
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            document.getElementById('recording-indicator').classList.add('hidden');
+        };
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const s = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('timer').innerText = `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`;
+                if (s >= 300) stopBtn.click();
+            }, 1000);
+        }
+
+        saveBtn.onclick = () => {
+            window.pendingAction = 'upload';
+            if (!accessToken) tokenClient.requestAccessToken({ prompt: '' });
+            else performUpload();
+        };
+
+        async function performUpload() {
+            updateStatus("Uploading to Drive...");
+            const metadata = { name: `AV_${new Date().toISOString()}.webm`, mimeType: 'video/webm' };
+            const form = new FormData();
+            form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+            form.append('file', blob);
+
+            try {
+                const res = await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart', {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + accessToken },
+                    body: form,
+                });
+                if (res.ok) {
+                    showModal('Success', 'Video saved to Drive!');
+                    updateStatus("Upload successful.");
+                }
+            } catch (err) { updateStatus("Upload failed."); }
+        }
+
+        // --- LIBRARY LOGIC ---
+        async function fetchLibrary() {
+            libraryList.innerHTML = '<div class="py-10 flex justify-center"><div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div></div>';
+            try {
+                // List only webm files created by this app
+                const q = encodeURIComponent("mimeType = 'video/webm' and trashed = false");
+                const res = await fetch(`https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name,createdTime)&orderBy=createdTime desc`, {
+                    headers: { 'Authorization': 'Bearer ' + accessToken }
+                });
+                const data = await res.json();
+                renderLibrary(data.files || []);
+            } catch (err) {
+                libraryList.innerHTML = '<p class="text-red-400 text-xs p-4">Failed to load files.</p>';
+            }
+        }
+
+        function renderLibrary(files) {
+            if (files.length === 0) {
+                libraryList.innerHTML = '<p class="text-center text-gray-500 text-sm py-10">No recordings found.</p>';
+                return;
+            }
+
+            libraryList.innerHTML = files.map(file => `
+                <button onclick="playVideo('${file.id}', '${file.name}', '${file.createdTime}')" 
+                        class="w-full text-left p-3 rounded-xl bg-gray-900/50 hover:bg-gray-700 border border-gray-800 transition-all flex items-center gap-3 group">
+                    <div class="p-2 bg-blue-900/30 rounded-lg text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="flex-1 truncate">
+                        <div class="text-sm font-semibold text-gray-200 truncate">${file.name}</div>
+                        <div class="text-[10px] text-gray-500">${new Date(file.createdTime).toLocaleString()}</div>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        async function playVideo(id, name, date) {
+            document.getElementById('player-placeholder').classList.add('hidden');
+            document.getElementById('playing-title').innerText = name;
+            document.getElementById('playing-date').innerText = new Date(date).toLocaleString();
+            
+            updateStatus("Loading video...");
+            
+            try {
+                // To play a private file, we fetch it as a blob using the token
+                const res = await fetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`, {
+                    headers: { 'Authorization': 'Bearer ' + accessToken }
+                });
+                
+                if (!res.ok) throw new Error("Could not fetch video data");
+                
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                
+                libraryPlayer.src = url;
+                libraryPlayer.play();
+                updateStatus("Playing: " + name);
+            } catch (err) {
+                showModal("Playback Error", "Could not load video. It might be still processing on Google Drive.");
+                updateStatus("Playback error.");
+            }
+        }
+
+        // --- UI HELPERS ---
+        function updateStatus(msg) {
+            document.getElementById('status-container').classList.remove('hidden');
+            statusMsg.innerText = msg;
+        }
+
+        function showModal(title, body) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerText = body;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

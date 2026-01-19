@@ -1,0 +1,203 @@
+:root {
+    --primary-red: hsl(0, 100%, 50%);
+    --dark-red: #9f1239;
+    --pure-white: #ffffff;
+    --bg-black: #0a0a0a;
+    --card-white: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: var(--bg-black);
+    color: var(--pure-white);
+    overflow-x: hidden;
+}
+
+/* ================= NAVIGATION ================= */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+    padding: 10px;
+    max-width: 500px;
+}
+
+.nav-tab {
+    padding: 12px 24px;
+    border: 2px solid var(--primary-red);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: transparent;
+    color: var(--pure-white);
+    transition: 0.3s;
+}
+
+.nav-tab.active {
+    background: var(--primary-red);
+    color: var(--pure-white);
+}
+
+/* ================= SCHEDULE PAGE (The 60% White) ================= */
+#schedulePage {
+    background: var(--card-white);
+    color: var(--text-main);
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+#schedulePage h1 {
+    color: var(--bg-black);
+    margin-bottom: 10px;
+}
+
+#schedulePage p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
+    font-size: 16px;
+    background: white;
+    color: var(--text-main);
+    resize: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+}
+
+#startBtn {
+    width: 100%;
+    background: var(--primary-red);
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#driveSignInBtn {
+    background: var(--bg-black) !important;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+/* ================= INTERVIEW PAGE (The 10% Black) ================= */
+#interviewPage {
+    background: black;
+}
+
+#video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+#caption {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 4px solid var(--primary-red);
+    padding: 25px;
+    border-radius: 10px;
+    z-index: 10;
+    text-align: center; /* Centered question */
+}
+
+#captionText {
+    color: var(--pure-white);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* ================= COMPONENTS ================= */
+#endCallBtn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: var(--primary-red);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+#recordingIndicator {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--primary-red);
+    z-index: 100;
+}
+
+/* ================= LIBRARY PAGE ================= */
+.library-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.video-list {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.video-item {
+    background: #262626;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+}
+
+.video-item.selected {
+    border-color: var(--primary-red);
+}
+
+.video-player-container {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+video {
+    border-radius: 10px;
+}
+
+button:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
